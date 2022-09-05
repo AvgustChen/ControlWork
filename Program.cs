@@ -22,21 +22,36 @@ void ShowArray(string[] array)//показать массив
 }
 string[] SecondArray(string[] mainarray)
 {
-    string[] secondarray = new string[mainarray.Length];
+
     int length = 0;
+    int count = 0;
     for (int i = 0; i < mainarray.Length; i++)
     {
         length = mainarray[i].Length;
         if (length <= 3)
         {
-            secondarray[i] = mainarray[i];
+            count++;
+        }
+    }
+    string[] secondarray = new string[count];
+    count = 0;
+    for (int i = 0; i < mainarray.Length; i++)
+    {
+        length = mainarray[i].Length;
+        if (length <= 3)
+        {
+            secondarray[count] = mainarray[i];
+            count++;
         }
     }
     return secondarray;
 }
+
 Console.Write("Введите размер массива: ");
 int size = Convert.ToInt32(Console.ReadLine());
 string[] mainarray = MainArray(size);
 string[] secondarray = SecondArray(mainarray);
+Console.WriteLine("Изначальный массив: ");
 ShowArray(mainarray);
+Console.WriteLine("Полученный массив: ");
 ShowArray(secondarray);
