@@ -3,12 +3,12 @@
 // либо задать на старте выполнения алгоритма. При решении не рекомендуется пользоваться
 // колекциями, лучше обойтись исключительно массивами.
 
-string[] MainArray (int size)
+string[] MainArray(int size)
 {
     string[] mainarray = new string[size];
     for (int i = 0; i < size; i++)
     {
-        Console.Write($"Введите {i+1} строку: ");
+        Console.Write($"Введите {i + 1} строку: ");
         mainarray[i] = Console.ReadLine();
     }
     return mainarray;
@@ -20,9 +20,23 @@ void ShowArray(string[] array)//показать массив
 
     Console.WriteLine();
 }
+string[] SecondArray(string[] mainarray)
+{
+    string[] secondarray = new string[mainarray.Length];
+    int length = 0;
+    for (int i = 0; i < mainarray.Length; i++)
+    {
+        length = mainarray[i].Length;
+        if (length <= 3)
+        {
+            secondarray[i] = mainarray[i];
+        }
+    }
+    return secondarray;
+}
 Console.Write("Введите размер массива: ");
 int size = Convert.ToInt32(Console.ReadLine());
-
 string[] mainarray = MainArray(size);
-
-ShowArray (mainarray);
+string[] secondarray = SecondArray(mainarray);
+ShowArray(mainarray);
+ShowArray(secondarray);
